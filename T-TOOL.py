@@ -8,7 +8,7 @@ print(pyfiglet.figlet_format("T - tool"))
 while True:
 	print("="*terminal_width)
 	
-	v1 = input("Посмотреть все установленые пакеты? [Y/N]:")
+	v1 = input("Посмотреть все установленые пакеты?:")
 	
 	if v1 == "Y":
 		distributions = importlib.metadata.distributions()
@@ -22,14 +22,14 @@ while True:
 		
 		installed_packages_list.sort(key=lambda x: x[0].lower())
 		
-		package = "\n".join([f"{name}=={version}" for name, version in installed_packages_list])
+		package = "\n".join([f"{name} == {version}" for name, version in installed_packages_list])
 	
 		total = len(installed_packages_list)
 	
 		print(f"""
-	{package}
+{package}
 	
-Всего: {total}""")
+{"\033[92m"} Всего: {total} {"\033[97m"}""")
 	else:
 		print("Программа завершается...")
 		break
